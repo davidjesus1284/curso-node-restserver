@@ -1,10 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 
+const { dbConnection } = require('../database/config');
+
 class Server {
     constructor() {
         this.app = express();
         this.usuariosPath = '/api/usuarios';
+        // Conectar a base de datos
+        this.conectarDB();
         // Middleware
         this.middleware();
 
@@ -30,6 +34,10 @@ class Server {
         this.app.listen(port, () => {
             console.log(`Servidor iniciado en htts://localhost:${port}`);
         });
+    }
+
+    async conectarDB() {
+        await dbConnection();
     }
 }
 
