@@ -11,7 +11,7 @@ const validarRolDB = async(rol = '') => {
 
 const emailExiste = async(correo) => {
     const existeEmail = await Usuario.findOne({ correo });
-    console.log(existeEmail);
+
     if (existeEmail) {
         throw new Error(`El correo ${correo} ya existe, por favor ingrese un nuevo correo`);
     }
@@ -19,7 +19,7 @@ const emailExiste = async(correo) => {
 
 const existeUsuarioPorId = async(id) => {
     const existeUsuario = await Usuario.findById(id);
-    console.log(existeUsuario);
+
     if (!existeUsuario) {
         throw new Error(`El id: ${id} no existe`);
     }
